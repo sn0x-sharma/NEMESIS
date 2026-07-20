@@ -227,7 +227,6 @@ instrumented (ASan / coverage) build to unlock the deeper triage paths.
 Only run NEMESIS against engines and targets you are **authorized** to test. Use the scope
 gate. Report what you find through the vendor's security / bug-bounty process. See
 [`SECURITY.md`](SECURITY.md). NEMESIS deliberately stops at *finding and characterizing*
-bugs — turning a bug into an exploit is out of scope for this project.
 
 ## Prior art
 
@@ -237,5 +236,5 @@ program builder, differential / N-version testing, and persistent-execution harn
 
 ## License
 
-[MIT](LICENSE) © 2026 sn0x. Contributions welcome — see
+[MIT](LICENSE) © 2026 sn0x. Contributions welcome see
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
