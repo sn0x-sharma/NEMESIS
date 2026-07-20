@@ -4,13 +4,24 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/CVE%20Intelligence-500%2B%20Entries-red?style=for-the-badge&logo=databricks&logoColor=white"/>
-<img src="https://img.shields.io/badge/Bug%20Strategies-100%2B%20Shapes-orange?style=for-the-badge&logo=target&logoColor=white"/>
-<img src="https://img.shields.io/badge/V8%20JIT%20Tiers-8%20Configs-blue?style=for-the-badge&logo=v8&logoColor=white"/>
-<img src="https://img.shields.io/badge/False%20Positives-0%20Verified-brightgreen?style=for-the-badge&logo=checkmarx&logoColor=white"/>
-<img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge&logo=opensourceinitiative&logoColor=white"/>
+<img src="https://img.shields.io/badge/CVE%20DATABASE-500%2B%20ENTRIES-red?style=for-the-badge&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/STRATEGIES-100%2B%20SHAPES-orange?style=for-the-badge&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/V8%20JIT%20TIERS-8%20CONFIGS-blue?style=for-the-badge&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/FALSE%20POSITIVES-0-brightgreen?style=for-the-badge&labelColor=0d0d0d"/>
 
-<br/><br/>
+<img src="https://img.shields.io/badge/C%2B%2B-17-00599C?style=for-the-badge&logo=cplusplus&logoColor=white&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black&labelColor=0d0d0d"/>
+&nbsp;
+<img src="https://img.shields.io/badge/License-MIT-9B59B6?style=for-the-badge&labelColor=0d0d0d"/>
+
+</div>
+
 
 > **A coverage-oriented differential fuzzer for WebAssembly-GC / JavaScript-JIT compilers.**
 > Generates typed Wasm-GC modules, runs them across 8 V8 JIT tiers, and flags any result
