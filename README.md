@@ -38,8 +38,6 @@
 
 ---
 
----
-
 
 ## What NEMESIS Can Do Right Now
 
@@ -57,10 +55,10 @@
 ### Differential Oracle (the sharp edge)
 | Capability | Status | Detail |
 |------------|--------|--------|
-| 8-config V8 differential | ✅ Live | Liftoff → TurboFan → Turboshaft → tier-up combos — same module, 8 compilers, any disagreement = real miscompilation |
+| 8-config V8 differential | Live | Liftoff → TurboFan → Turboshaft → tier-up combos — same module, 8 compilers, any disagreement = real miscompilation |
 | Sound oracle | ✅ Verified | 0 false positives across thousands of modules — Wasm determinism guarantees: divergence = bug |
-| Silent miscompilation detection | ✅ Live | Finds wrong-result bugs with **no crash** — invisible to traditional crash-only fuzzers |
-| Crash detection | ✅ Live | SIGSEGV / SIGABRT / timeout — all signal classes covered |
+| Silent miscompilation detection | Live | Finds wrong-result bugs with **no crash** — invisible to traditional crash-only fuzzers |
+| Crash detection | Live | SIGSEGV / SIGABRT / timeout — all signal classes covered |
 
 ### Bug-Class Strategies (13 CVE-shaped triggers)
 | Strategy | CVE Class Targeted |
@@ -82,23 +80,23 @@
 ### CVE Intelligence
 | Capability | Status | Detail |
 |------------|--------|--------|
-| 486-entry CVE database | ✅ Live | Scraped + structured from NVD, Wasm/JIT focused |
-| CVE-frequency weighted hunting | ✅ Live | Strategy selection weighted by real-world bug-class distribution |
-| `cve match` | ✅ Live | Match a crash/divergence against known CVE patterns |
-| `cve variant` | ✅ Live | Find cross-engine variant candidates for a known CVE |
-| `cve patchgap` | ✅ Live | Identify classes patched in one engine but not others |
-| `cve trend` | ✅ Live | Bug-class frequency over time — where to aim next |
+| 486-entry CVE database | Live | Scraped + structured from NVD, Wasm/JIT focused |
+| CVE-frequency weighted hunting | Live | Strategy selection weighted by real-world bug-class distribution |
+| `cve match` | Live | Match a crash/divergence against known CVE patterns |
+| `cve variant` | Live | Find cross-engine variant candidates for a known CVE |
+| `cve patchgap` | Live | Identify classes patched in one engine but not others |
+| `cve trend` | Live | Bug-class frequency over time — where to aim next |
 
 ### Triage + Reporting Pipeline
 | Capability | Status | Detail |
 |------------|--------|--------|
-| Stack-hash dedup | ✅ Live | Same bug, multiple seeds → deduplicated automatically |
-| Delta-debug minimizer | ✅ Live | Crashing/diverging module reduced to minimal repro, instruction by instruction |
-| Exploitability classifier | ✅ Live | Read vs write fault, near-null vs controlled address, entropy across runs → severity bucket |
-| ASan output parser | ✅ Live | Sanitizer report → bug class + CWE + exploitability label (needs ASan build to activate) |
-| Scope gate | ✅ Live | Authorization check before any campaign — prevents accidental out-of-scope testing |
-| Evidence vault | ✅ Live | All findings logged, timestamped, searchable |
-| Auto report generator | ✅ Live | HackerOne / Bugzilla markdown draft + CVSS score + repro.html + minimized PoC |
+| Stack-hash dedup | Live | Same bug, multiple seeds → deduplicated automatically |
+| Delta-debug minimizer | Live | Crashing/diverging module reduced to minimal repro, instruction by instruction |
+| Exploitability classifier | Live | Read vs write fault, near-null vs controlled address, entropy across runs → severity bucket |
+| ASan output parser | Live | Sanitizer report → bug class + CWE + exploitability label (needs ASan build to activate) |
+| Scope gate | Live | Authorization check before any campaign — prevents accidental out-of-scope testing |
+| Evidence vault | Live | All findings logged, timestamped, searchable |
+| Auto report generator | Live | HackerOne / Bugzilla markdown draft + CVSS score + repro.html + minimized PoC |
 
 ### Ops
 | Command | What it does |
