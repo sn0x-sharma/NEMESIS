@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js (provides the V8 target)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build the C++ core
+        run: make
+
+      - name: Selftest (IL -> lifter -> validator -> execute on V8)
+        run: make selftest
+
+      - name: Strategies validate on V8
+        run: ./build/nemesis strategies
+
+      - name: Python triage tests
+        run: python3 tests/test_triage.py
+
+      - name: CVE database parses
+        run: python3 -c "import json; json.load(open('seeds/cve_db.json'))"

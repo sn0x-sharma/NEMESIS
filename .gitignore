@@ -1,0 +1,50 @@
+# ---- build + generated output (never ship) ----
+build/
+*.o
+*.obj
+*.a
+*.so
+
+# generated Wasm test output — EXCEPT the labeled samples under examples/
+*.wasm
+!examples/*.wasm
+
+# fuzzing run artifacts
+crashes/
+diffs/
+findings/
+corpus_store/
+vault/
+telemetry/
+*.jsonl
+cve_weights.txt
+
+# ---- python ----
+__pycache__/
+*.pyc
+*.pyo
+
+# ---- local config / secrets (never ship) ----
+# real scope may list your authorized targets; ship .nemesis-scope.example.json instead
+.nemesis-scope.json
+*.env
+.env
+.env.*
+*.key
+*.pem
+*_token
+secrets.*
+
+# ---- downloaded engine binaries (too big / license-restricted — fetch per targets/*/README) ----
+targets/**/js
+targets/**/d8
+targets/**/jsshell*
+targets/**/*.zip
+targets/**/*.tar.*
+targets/**/bin/
+
+# ---- editor / os ----
+.DS_Store
+.idea/
+.vscode/
+*.swp
