@@ -1,43 +1,62 @@
-# NEMESIS
+<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/a3f03d15-4a36-4991-8747-b5c558fdeadb" />
+
+
 
 **A coverage-oriented, differential fuzzer for WebAssembly-GC / JavaScript-JIT compilers.**
 It generates typed Wasm-GC modules, runs them across multiple V8 JIT tiers, and flags any
-module that produces a *different result under different compilers* — a JIT miscompilation.
-
-> **Scope — read this first.** NEMESIS **finds, minimizes, and reports** compiler
-> miscompilations and crashes. It is a research / bug-hunting tool for **authorized testing
-> and responsible disclosure only**. It is **explicitly not an exploit framework**: it does
-> not build exploit primitives, shellcode, or sandbox escapes, and it does not weaponize the
-> bugs it finds. Output is a minimized repro + an honest severity assessment + a report draft.
+module that produces a *different result under different compilers* a JIT miscompilation.
 
 ## What it does (today)
 
-- **Typed Wasm-GC IL** — structs, arrays, i31, references, rec-groups, subtyping, control
+- **Typed Wasm-GC IL** structs, arrays, i31, references, rec-groups, subtyping, control
   flow, `call_indirect`/tables, tail-calls. Mutation happens on the typed IL, so generated
   modules stay valid instead of being random bytes.
-- **Type-aware generator + mutators** — ~100% validator-valid modules.
-- **8-config V8 differential oracle** — the same module is run under 8 V8 Wasm compiler
+- **Type-aware generator + mutators** ~100% validator-valid modules.
+- **8-config V8 differential oracle** the same module is run under 8 V8 Wasm compiler
   configurations (Liftoff baseline → TurboFan → Turboshaft → tier-up → …). Wasm is
   deterministic, so if two tiers disagree on the result, that is a real miscompilation.
-- **13 bug-class strategies** — hand-written trigger shapes for type-confusion, OOB,
+- **13 bug-class strategies** hand-written trigger shapes for type-confusion, OOB,
   UAF-boundary, LICM bounds-check elision, OSR, GC write-barrier, `call_indirect`, tail-call,
   shape-mutation, and deopt classes.
-- **CVE-biased directed hunt** — weights strategy selection by real-world CVE class frequency
+- **CVE-biased directed hunt** weights strategy selection by real-world CVE class frequency
   (from a 486-entry CVE database + NVD scraper).
 - **Delta-debug minimizer**, blackbox crash detection, stack-hash dedup, an exploitability
   classifier, an ASan-output parser, an evidence vault, a scope-gate, a repro/report/CVSS
   pack generator, and a telemetry dashboard.
 
-## What it does **not** do (yet) — kept honest
+## Upcoming / Roadmap
 
-- **Only V8 is wired as a target today** (via a `node` shell). SpiderMonkey (Firefox) and
-  JavaScriptCore (Safari) targets are designed-for but not yet implemented — see
-  `targets/`.
-- **No coverage-guided feedback** and **no ASan-in-loop triage** on a stock engine — both
-  need an instrumented engine build. The interfaces exist and light up when you supply one.
-  See [`docs/CAPABILITY-MATRIX.md`](docs/CAPABILITY-MATRIX.md) for the exact per-feature
-  status — nothing is oversold; unimplemented paths say so at runtime.
-- It is Wasm-GC/JIT focused. It does not fuzz the DOM, JS built-ins, or the browser UI.
+### New Fuzzing Strategies (in development)
+| # | Strategy | Description |
+|---|----------|-------------|
+| 1 | Multi-Stage Interleaving | Setup → GC → object access → type mutation in one seed |
+| 2 | JIT + GC + Worker Triangulation | 3-way race: JIT compile + GC + Worker on same object |
+| 3 | Cross-Realm Confusion | iframe parent+child realm type-check confusion |
+| 4 | Prototype Chain Poisoning | Array.prototype / Object.prototype corruption |
+| 5 | Promise Flood | Thousands of pending Promises resolved simultaneously → microtask overflow |
+| 6 | Shape Mutation During Optimization | Mid-loop shape change → JIT type confusion |
+| 7 | Deoptimization Bomb | Force JIT bailout at critical moment → stack state corruption |
+| 8 | IC Unstable State | Megamorphic call site → inline cache confusion → wrong dispatch |
+| 9 | Species Chain Explosion | Array[Symbol.species] patch → type confusion in built-ins |
+| 10 | Detached Buffer Access | transferArrayBuffer → detach → continue access → OOB/UAF |
+| 11 | SAB + Atomics + Worker Race | SharedArrayBuffer + Atomics cross-thread data race |
+| 12 | Wasm Table Overflow | Grow table to max → call_indirect at boundary → type confusion |
+| 13 | Recursive Type Bomb | Deeply recursive Wasm-GC type defs → type checker infinite recursion |
+| 14 | CSS + DOM + JS Triple Interaction | CSS reflow + DOM + JS concurrent → layout engine UAF |
+| 15 | Cross-Origin Window Confusion | Cross-origin closure variable access boundary confusion |
+| 16 | JIT spray shellcode auto-encode | Shellcode → float constants → JIT compiled RWX memory → execute |
+| 17 | addrof/fakeobj auto primitive build | 
+
+### Planned Engine Targets
+- SpiderMonkey (Firefox) harness designed, pending jsshell integration
+- JavaScriptCore (Safari/WebKit) planned
+- wasmtime (reference interpreter oracle) planned
+
+### Infrastructure
+- Coverage-guided feedback loop (needs instrumented engine build)
+- ASan-in-loop automated triage
+- Web dashboard alert system
+- Multi-process parallel corpus sync
 
 ## Install & build
 
@@ -109,7 +128,7 @@ bugs — turning a bug into an exploit is out of scope for this project.
 ## Prior art
 
 NEMESIS builds on well-established ideas from the coverage-guided and structure-aware fuzzing
-literature — mutating a **typed intermediate language** rather than raw bytes, an incremental
+literature mutating a **typed intermediate language** rather than raw bytes, an incremental
 program builder, differential / N-version testing, and persistent-execution harnessing.
 
 ## License
