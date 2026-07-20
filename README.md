@@ -1,10 +1,44 @@
-<img width="1774" height="887" alt="image" src="https://github.com/user-attachments/assets/a3f03d15-4a36-4991-8747-b5c558fdeadb" />
+<img width="1983" height="793" alt="image" src="https://github.com/user-attachments/assets/086603d0-e4c6-4684-9e09-43b3c0be65bc" />
 
 ---
 
-**A coverage-oriented, differential fuzzer for WebAssembly-GC / JavaScript-JIT compilers.**
-It generates typed Wasm-GC modules, runs them across multiple V8 JIT tiers, and flags any
-module that produces a *different result under different compilers* a JIT miscompilation.
+<div align="center">
+
+<img src="https://img.shields.io/badge/CVE%20Intelligence-500%2B%20Entries-red?style=for-the-badge&logo=databricks&logoColor=white"/>
+<img src="https://img.shields.io/badge/Bug%20Strategies-100%2B%20Shapes-orange?style=for-the-badge&logo=target&logoColor=white"/>
+<img src="https://img.shields.io/badge/V8%20JIT%20Tiers-8%20Configs-blue?style=for-the-badge&logo=v8&logoColor=white"/>
+<img src="https://img.shields.io/badge/False%20Positives-0%20Verified-brightgreen?style=for-the-badge&logo=checkmarx&logoColor=white"/>
+<img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge&logo=opensourceinitiative&logoColor=white"/>
+
+<br/><br/>
+
+> **A coverage-oriented differential fuzzer for WebAssembly-GC / JavaScript-JIT compilers.**
+> Generates typed Wasm-GC modules, runs them across 8 V8 JIT tiers, and flags any result
+> disagreement as a **real miscompilation** then minimizes it to a clean repro and drafts
+> the report. Finds silent wrong-output bugs **with no crash required** invisible to
+> traditional crash-only fuzzers.
+
+<br/>
+
+| 🧠 Typed Wasm-GC IL | ⚡ 8-Config Differential Oracle | 🎯 100+ CVE-Shaped Strategies |
+|:---:|:---:|:---:|
+| Structs · Arrays · i31 · Refs · Rec-groups · Subtyping · Tail-calls | Liftoff → TurboFan → Turboshaft → Tier-up combos. Wasm is deterministic — divergence = real bug | Type-confusion · OOB · UAF · LICM · OSR · GC-barrier · Deopt · call_indirect + more |
+
+| 🗄️ 500+ CVE Intelligence DB | 🔬 Full Triage Pipeline | 📋 Auto Report Generator |
+|:---:|:---:|:---:|
+| NVD-sourced, Wasm/JIT focused. CVE-weighted strategy selection hunts where bugs actually live | Stack-hash dedup · Delta-debug minimizer · Exploitability classifier · ASan parser | HackerOne / Bugzilla markdown · CVSS score · repro.html · minimized PoC submission-ready |
+
+<br/>
+
+<br/>
+
+⚠️ **Authorized research & responsible disclosure only.**
+
+</div>
+
+---
+
+---
 
 
 ## What NEMESIS Can Do Right Now
@@ -125,7 +159,7 @@ Requirements: a C++17 compiler (`g++` or `clang++`), `make`, and **Node.js** (pr
 V8 target). No cmake/ninja needed.
 
 ```sh
-git clone https://github.com/<you>/nemesis
+git clone https://github.com/sn0x-sharma/nemesis
 cd nemesis
 make                 # builds build/nemesis (the C++ core)
 make selftest        # lifts sample IL -> wasm -> validates + executes on V8
