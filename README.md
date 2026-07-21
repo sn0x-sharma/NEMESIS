@@ -225,7 +225,7 @@ instrumented (ASan / coverage) build to unlock the deeper triage paths.
 ## Kind of Bugs I Found Using This Tool
 
 I have intentionally removed many of this tool's features. At the moment, this repository represents only about **20–30%** of its actual capabilities.
-The more advanced functionality has **not** been included because it is capable of discovering highly critical vulnerabilities, and I am not comfortable making those techniques public at this time.
+The more advanced functionality has **not** been included and I am not comfortable making those techniques public at this time.
 The examples below represent the kinds of bugs I found when using the **full internal version** of this tool. One example is demonstrated in the video below.
 <img width="800" height="450" alt="VIDEO-RCE-ezgif com-video-to-gif-converter" src="https://github.com/user-attachments/assets/a124cc53-e1b8-42e8-8acb-5cd505e7077b" />
 
