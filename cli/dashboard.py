@@ -152,7 +152,7 @@ bugs for disclosure; does not weaponize. Divergence/crash counts are real oracle
 
 def build_html():
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w") as fh:
+    with open(OUT, "w", encoding="utf-8") as fh:
         fh.write(render())
     return OUT
 
