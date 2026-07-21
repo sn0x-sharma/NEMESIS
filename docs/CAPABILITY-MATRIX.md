@@ -1,9 +1,5 @@
 # Capability Matrix
 
-Honest status of every NEMESIS capability on **this** machine (Kali x86_64, ~9.8 GB free
-disk, 10 GB RAM, stock Node/V8, no SpiderMonkey/d8, no cmake/ninja/swift). Nothing is
-faked: a capability marked `NOT_WIRED` prints that at runtime rather than pretending.
-
 Legend: **LIVE** runs now · **LIVE\*** runs now if you install the named tool ·
 **NOT_WIRED** interface exists, needs an engine build this box can't produce ·
 **PHASE-N** scheduled for a later phase.
