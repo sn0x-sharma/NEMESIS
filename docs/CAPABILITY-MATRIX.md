@@ -16,21 +16,21 @@ Legend: **LIVE** runs now · **LIVE\*** runs now if you install the named tool �
 | **Differential oracle across V8 configs (v1..v8)** | **LIVE** | 8 JIT tiers on one V8; `diff`/`configs` |
 | **Tier matrix (V8 flag matrix)** | **LIVE** | Liftoff/TurboFan/Turboshaft/tier-up/unroll |
 | Cross-*version* differential (v1..v8 = 8 releases) | LIVE\* | override each slot's binary path |
-| Corpus store + energy scheduler | PHASE-4 | guided growth needs coverage |
-| Delta-debug minimizer | PHASE-4 | — |
-| Adversarial strategies (LICM-bait, OSR, RTT-alias, GC-boundary) | PHASE-4 | induce real tier divergence |
-| REPRL persistent harness | PHASE-5 | ~1000x throughput; needs instrumented engine |
-| Interpreter oracle (wasmtime/wasm3) | PHASE-5, LIVE\* | 3rd-party ground truth vs V8 |
+| Corpus store + energy scheduler | Upcoming features | guided growth needs coverage |
+| Delta-debug minimizer | Upcoming features | — |
+| Adversarial strategies (LICM-bait, OSR, RTT-alias, GC-boundary) | Upcoming features | induce real tier divergence |
+| REPRL persistent harness | Upcoming features | ~1000x throughput; needs instrumented engine |
+| Interpreter oracle (wasmtime/wasm3) | Upcoming features, LIVE\* | 3rd-party ground truth vs V8 |
 | Adversarial strategies (LICM-bait, OSR, variance, RTT, GC-boundary, …) | PHASE-4 | — |
-| CVE metadata DB (300+) + IL seeds (~40) | PHASE-4 | — |
+| CVE metadata DB (300+) + IL seeds (~40) | Upcoming features | — |
 | **Coverage-guided feedback** | **NOT_WIRED** | instrumented engine build (~30-50 GB disk, cmake/ninja) |
 | **ASan/MSan/UBSan-in-loop triage** | **NOT_WIRED** | sanitizer engine build |
 | Firefox-tab watchdog harness | NOT_WIRED | Firefox install + disk |
 | SpiderMonkey / d8 targets | NOT_WIRED | engine binaries not on box |
-| Telemetry + local dashboard | PHASE-5 | — |
-| Draft report generator | PHASE-6 | — |
-| Snapshot / fork-server execution | PHASE-8 | — |
-| Concolic branch-flip, taint tracking, ML bucket classifier | PHASE-8+ | interface seams reserved |
+| Telemetry + local dashboard | Upcoming features | — |
+| Draft report generator | Upcoming features | — |
+| Snapshot / fork-server execution | Upcoming features | — |
+| Concolic branch-flip, taint tracking, ML bucket classifier | Upcoming features | interface seams reserved |
 
 ## How to unblock the NOT_WIRED items
 
